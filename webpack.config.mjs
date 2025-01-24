@@ -1,11 +1,14 @@
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+import path from 'path';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-module.exports = {
+// Получаем директорию текущего модуля
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
+
+export default {
   devtool: 'source-map',
-  entry: './src/index.jsx', 
+  entry: './src/index.jsx',
   output: {
-    filename: 'bundle.js', 
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
 
@@ -48,7 +51,7 @@ module.exports = {
   
       {
         test: /\.(js|jsx)$/i,
-        exclude: /node_modules/, 
+        exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
@@ -63,16 +66,16 @@ module.exports = {
 
   devServer: {
     static: path.join(__dirname, 'dist'),
-    compress: true, 
-    port: 9000, 
-    open: true, 
+    compress: true,
+    port: 9000,
+    open: true,
     historyApiFallback: true,
   },
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html', 
-      filename: 'index.html', 
+      template: './src/index.html',
+      filename: 'index.html',
     }),
   ],
 
