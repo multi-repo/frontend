@@ -11,6 +11,12 @@ import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
+    settings: {
+      react: {
+        version: 'detect'
+      }, }
+  },
+  {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
       'react': eslintReact,
