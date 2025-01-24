@@ -13,7 +13,9 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "VITE_APP_ENV=development vite",
+    "start": "VITE_APP_ENV=development webpack",
+    "webpack-dev": "PROD_ENV=development webpack server --open",
+    "webpack-prod": "PROD_ENV=production webpack server --open",
     "dev": "VITE_APP_ENV=development vite",
     "build": "react-scripts build",
     "test": "react-scripts test",

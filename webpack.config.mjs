@@ -1,15 +1,18 @@
 import path from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-// Получаем директорию текущего модуля
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
+const isProd = process.env.PROD_ENV === 'production';
+
 export default {
-  devtool: 'source-map',
+  devtool: isProd ? 'source-map' : 'eval-source-map',
+  
   entry: './src/index.jsx',
   output: {
-    filename: 'bundle.js',
+    filename: isProd ? 'bundle.[contenthash].js' : 'bundle.js', 
     path: path.resolve(__dirname, 'dist'),
+    clean: true,
   },
 
   resolve: {
@@ -21,17 +24,17 @@ export default {
       {
         test: /\.scss$/i,
         use: [
-          'style-loader', 
+          isProd ? 'style-loader' : 'style-loader',
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true, 
+              sourceMap: !isProd, 
             },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: true, 
+              sourceMap: !isProd, 
             },
           },
         ],
@@ -39,16 +42,16 @@ export default {
       {
         test: /\.css$/i,
         use: [
-          'style-loader', 
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true,
+              sourceMap: !isProd, 
             },
           },
         ],
       },
-  
+
       {
         test: /\.(js|jsx)$/i,
         exclude: /node_modules/,
@@ -56,7 +59,7 @@ export default {
           {
             loader: 'babel-loader',
             options: {
-              sourceMap: true,
+              sourceMap: !isProd, 
             },
           },
         ],
@@ -68,8 +71,8 @@ export default {
     static: path.join(__dirname, 'dist'),
     compress: true,
     port: 9000,
-    open: true,
     historyApiFallback: true,
+    open: true, 
   },
 
   plugins: [
@@ -79,5 +82,5 @@ export default {
     }),
   ],
 
-  mode: 'development',
+  mode: isProd ? 'production' : 'development',
 };
