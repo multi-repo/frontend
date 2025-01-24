@@ -13,8 +13,8 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "webpack serve --open --mode development",
-    "dev": "vite",
+    "start": "VITE_APP_ENV=development vite",
+    "dev": "VITE_APP_ENV=development vite",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
