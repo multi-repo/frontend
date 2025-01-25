@@ -4,12 +4,13 @@ import eslintReact from 'eslint-plugin-react';
 import eslintReactHooks from 'eslint-plugin-react-hooks';
 import eslintReactRefresh from 'eslint-plugin-react-refresh';
 import prettierPlugin from 'eslint-plugin-prettier';
+import tseslint from 'typescript-eslint';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import tseslint from "typescript-eslint";
-
-
+import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 
 export default tseslint.config(
+  eslintPluginPrettierRecommended,
+
   {
     settings: {
       react: {
@@ -21,7 +22,7 @@ export default tseslint.config(
   {
     plugins: {
       '@typescript-eslint': tseslint.plugin,
-      'react': eslintReact,
+      react: eslintReact,
       'react-hooks': eslintReactHooks,
       'react-refresh': eslintReactRefresh,
       prettier: prettierPlugin,
@@ -38,6 +39,8 @@ export default tseslint.config(
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  eslintConfigPrettier,
+
   {
     languageOptions: {
       globals: {
@@ -47,23 +50,55 @@ export default tseslint.config(
       },
       parserOptions: {
         project: ['tsconfig.json'],
-      }
+      },
     },
   },
   {
-    files: ['**/*.{ts,tsx,jsx,js}'],
+    files: ['**/*.{js,jsx}'],
     rules: {
-      ...prettierPlugin.configs.recommended.rules,
-      ...eslintConfigPrettier.rules,
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
       'prefer-const': 'error',
-      'react/jsx-curly-brace-presence': ['warn', { props: 'never', children: 'never' }],
-      'react/function-component-definition': ['warn', { namedComponents: 'arrow-function' }],
+      'react/jsx-curly-brace-presence': [
+        'warn',
+        { props: 'never', children: 'never' },
+      ],
+      'react/function-component-definition': [
+        'warn',
+        { namedComponents: 'arrow-function' },
+      ],
       'react/self-closing-comp': ['error', { component: true, html: true }],
       'max-lines': ['warn', { max: 124 }],
       'max-params': ['error', 3],
       'no-unused-vars': ['warn', { args: 'none', ignoreRestSiblings: true }],
-      '@typescript-eslint/no-unused-vars': ['warn', { args: 'none', ignoreRestSiblings: true }],
+    },
+  },
+
+  {
+    files: ['**/*.{ts,tsx}'],
+    rules: {
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
+      'prefer-const': 'error',
+      'react/jsx-curly-brace-presence': [
+        'warn',
+        { props: 'never', children: 'never' },
+      ],
+      'react/function-component-definition': [
+        'warn',
+        { namedComponents: 'arrow-function' },
+      ],
+      'react/self-closing-comp': ['error', { component: true, html: true }],
+      'max-lines': ['warn', { max: 124 }],
+      'max-params': ['error', 3],
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        { args: 'none', ignoreRestSiblings: true },
+      ],
     },
   },
 );

@@ -10,11 +10,11 @@ export default defineConfig(() => {
 
     build: {
       outDir: path.resolve(__dirname, 'dist'),
-      sourcemap: !isProd, 
+      sourcemap: !isProd,
       terserOptions: isProd
         ? {
             compress: {
-              drop_console: true, 
+              drop_console: true,
             },
           }
         : {},

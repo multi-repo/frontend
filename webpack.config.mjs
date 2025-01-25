@@ -7,10 +7,10 @@ const isProd = process.env.PROD_ENV === 'production';
 
 export default {
   devtool: isProd ? 'source-map' : 'eval-source-map',
-  
+
   entry: './src/index.jsx',
   output: {
-    filename: isProd ? 'bundle.[contenthash].js' : 'bundle.js', 
+    filename: isProd ? 'bundle.[contenthash].js' : 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
@@ -28,13 +28,13 @@ export default {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: !isProd, 
+              sourceMap: !isProd,
             },
           },
           {
             loader: 'sass-loader',
             options: {
-              sourceMap: !isProd, 
+              sourceMap: !isProd,
             },
           },
         ],
@@ -46,7 +46,7 @@ export default {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: !isProd, 
+              sourceMap: !isProd,
             },
           },
         ],
@@ -59,7 +59,7 @@ export default {
           {
             loader: 'babel-loader',
             options: {
-              sourceMap: !isProd, 
+              sourceMap: !isProd,
             },
           },
         ],
@@ -72,7 +72,7 @@ export default {
     compress: true,
     port: 9000,
     historyApiFallback: true,
-    open: true, 
+    open: true,
   },
 
   plugins: [
