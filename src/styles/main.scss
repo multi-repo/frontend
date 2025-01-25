@@ -1,14 +1,31 @@
 $primary-color: black;
 $font-stack: 'Arial', sans-serif;
 
-body {
+* {
   margin: 0;
-  font-family: $font-stack; 
-  background-color: $primary-color;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-h1 {
-  color: white;
-  text-align: center;
-  padding: 20px;
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  font-family: $font-stack;
+  background-color: #f0f0f0; 
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root, .App {
+  height: 100%;
+  width: 100%;
 }

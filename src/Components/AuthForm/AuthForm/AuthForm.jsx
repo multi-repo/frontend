@@ -1,30 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './AuthForm.scss';
 
-const AuthForm = () => {
+const AuthForm = ({ onAuthenticate }) => {
   const [formData, setFormData] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
+  const usernameRef = useRef(null);
 
-  const handleChange = (e) => {
+  useEffect(() => {
+    usernameRef.current.focus();
+  }, []);
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(''), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  const handleChange = useCallback((e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!formData.username || !formData.password) {
       setError('Пожалуйста, заполните все поля!');
+      if (!formData.username) usernameRef.current.focus();
       return;
     }
     setError('');
     console.log('Логин:', formData.username, 'Пароль:', formData.password);
-    alert('Авторизация успешна!');
+    setSuccessMessage('Авторизация успешна!');
+    onAuthenticate();
+    setFormData({ username: '', password: '' });
+    usernameRef.current.focus();
   };
 
   return (
     <form className="authForm" onSubmit={handleSubmit}>
       <h2>Авторизация</h2>
       {error && <p className="error">{error}</p>}
+      {successMessage && <p className="success">{successMessage}</p>}
       <div className="formGroup">
         <label htmlFor="username">Имя пользователя</label>
         <input
@@ -34,6 +52,7 @@ const AuthForm = () => {
           value={formData.username}
           onChange={handleChange}
           placeholder="Введите имя пользователя"
+          ref={usernameRef}
         />
       </div>
       <div className="formGroup">
