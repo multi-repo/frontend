@@ -1,42 +1,42 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import './AuthForm.scss';
+import React, { useState, useEffect, useRef, useCallback } from 'react'
+import './AuthForm.scss'
 
 const AuthForm = ({ onAuthenticate }) => {
-  const [formData, setFormData] = useState({ username: '', password: '' });
-  const [error, setError] = useState('');
-  const [successMessage, setSuccessMessage] = useState('');
-  const usernameRef = useRef(null);
+  const [formData, setFormData] = useState({ username: '', password: '' })
+  const [error, setError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const usernameRef = useRef(null)
 
   useEffect(() => {
-    usernameRef.current.focus();
-  }, []);
+    usernameRef.current.focus()
+  }, [])
 
   useEffect(() => {
     if (error) {
-      const timer = setTimeout(() => setError(''), 3000);
-      return () => clearTimeout(timer);
+      const timer = setTimeout(() => setError(''), 3000)
+      return () => clearTimeout(timer)
     }
-  }, [error]);
+  }, [error])
 
   const handleChange = useCallback((e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({ ...prevData, [name]: value }));
-  }, []);
+    const { name, value } = e.target
+    setFormData((prevData) => ({ ...prevData, [name]: value }))
+  }, [])
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     if (!formData.username || !formData.password) {
-      setError('Пожалуйста, заполните все поля!');
-      if (!formData.username) usernameRef.current.focus();
-      return;
+      setError('Пожалуйста, заполните все поля!')
+      if (!formData.username) usernameRef.current.focus()
+      return
     }
-    setError('');
-    console.log('Логин:', formData.username, 'Пароль:', formData.password);
-    setSuccessMessage('Авторизация успешна!');
-    onAuthenticate();
-    setFormData({ username: '', password: '' });
-    usernameRef.current.focus();
-  };
+    setError('')
+    console.log('Логин:', formData.username, 'Пароль:', formData.password)
+    setSuccessMessage('Авторизация успешна!')
+    onAuthenticate()
+    setFormData({ username: '', password: '' })
+    usernameRef.current.focus()
+  }
 
   return (
     <form className="authForm" onSubmit={handleSubmit}>
@@ -70,7 +70,7 @@ const AuthForm = ({ onAuthenticate }) => {
         Войти
       </button>
     </form>
-  );
-};
+  )
+}
 
-export default AuthForm;
+export default AuthForm

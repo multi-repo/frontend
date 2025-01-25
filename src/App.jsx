@@ -5,11 +5,11 @@ import AuthLayout from './Components/AuthForm/AuthMain'
 import MainLayout from './Components/Main'
 
 const App = () => {
-    return (
-        <div className="app">
-            <MainLayout />
-        </div>
-    )
+  return (
+    <div className="app">
+      <MainLayout />
+    </div>
+  )
 }
 
 export default App
