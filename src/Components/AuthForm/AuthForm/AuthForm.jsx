@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import './AuthForm.scss'
+import './styles/index.scss'
 
 const AuthForm = ({ onAuthenticate }) => {
   const [formData, setFormData] = useState({ username: '', password: '' })
@@ -46,6 +46,7 @@ const AuthForm = ({ onAuthenticate }) => {
       <div className="formGroup">
         <label htmlFor="username">Имя пользователя</label>
         <input
+          className="formInput"
           type="text"
           id="username"
           name="username"
@@ -58,6 +59,7 @@ const AuthForm = ({ onAuthenticate }) => {
       <div className="formGroup">
         <label htmlFor="password">Пароль</label>
         <input
+          className="formInput"
           type="password"
           id="password"
           name="password"
