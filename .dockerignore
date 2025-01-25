@@ -1,0 +1,9 @@
+.dockerignore
+.gitignore
+.prettierrc.yaml
+.stylelintrc.json
+commitlint.config.mjs
+eslint.config.mjs
+tsconfig.json
+.husky
+yarn.lock

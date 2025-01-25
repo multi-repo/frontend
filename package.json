@@ -13,11 +13,8 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "VITE_APP_ENV=development webpack",
-    "webpack-dev": "PROD_ENV=development webpack server --open",
-    "webpack-prod": "PROD_ENV=production webpack server --open",
-    "dev": "VITE_APP_ENV=development vite",
-    "build": "react-scripts build",
+    "start": "VITE_APP_ENV=development vite",
+    "build": "vite build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint \"{src,apps,libs,test}/**/*.{js,jsx}\" --fix"
