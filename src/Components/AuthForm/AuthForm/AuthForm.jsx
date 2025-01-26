@@ -18,6 +18,13 @@ const AuthForm = ({ onAuthenticate }) => {
     }
   }, [error])
 
+  useEffect(() => {
+    if (successMessage) {
+      const timer = setTimeout(() => setSuccessMessage(''), 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [successMessage])
+
   const handleChange = useCallback((e) => {
     const { name, value } = e.target
     setFormData((prevData) => ({ ...prevData, [name]: value }))
@@ -25,15 +32,20 @@ const AuthForm = ({ onAuthenticate }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!formData.username || !formData.password) {
+    const { username, password } = formData
+
+    if (!username || !password) {
       setError('Пожалуйста, заполните все поля!')
-      if (!formData.username) usernameRef.current.focus()
+      if (!username) usernameRef.current.focus()
       return
     }
+
     setError('')
-    console.log('Логин:', formData.username, 'Пароль:', formData.password)
     setSuccessMessage('Авторизация успешна!')
+    console.log('Логин:', username, 'Пароль:', password)
+
     onAuthenticate()
+
     setFormData({ username: '', password: '' })
     usernameRef.current.focus()
   }

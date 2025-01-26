@@ -1,19 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import AuthLayout from './AuthForm/AuthMain'
 import MenuLayout from './Menu/MenuMain'
+import { login } from '../store/authSlice.js'
 import './styles/index.scss'
 
 const MainLayout = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
+
+  const dispatch = useDispatch()
 
   const handleAuthentication = () => {
-    setIsAuthenticated(true)
+    dispatch(login())
   }
 
   return (
     <div className="app">
       {!isAuthenticated && <AuthLayout onAuthenticate={handleAuthentication} />}
-      <MenuLayout />
+      {isAuthenticated && <MenuLayout />}
     </div>
   )
 }

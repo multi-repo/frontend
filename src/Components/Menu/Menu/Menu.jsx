@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './styles/index.scss'
 
 const DropdownMenu = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -8,42 +9,37 @@ const DropdownMenu = () => {
   }
 
   return (
-    <div style={{ position: 'relative' }}>
-      <button onClick={toggleMenu} style={buttonStyle}>
+    <div className="dropdown">
+      <button onClick={toggleMenu} className="dropdown__button">
         Menu
       </button>
       {isOpen && (
-        <ul style={menuStyle}>
-          <li style={menuItemStyle}>Option 1</li>
-          <li style={menuItemStyle}>Option 2</li>
-          <li style={menuItemStyle}>Option 3</li>
-        </ul>
+        <div className="dropdown__menu">
+          <div className="dropdown__section">
+            <h4 className="dropdown__section-title">Section 1</h4>
+            <ul className="dropdown__list">
+              <li className="dropdown__item">Option 1</li>
+              <li className="dropdown__item">Option 2</li>
+            </ul>
+          </div>
+          <div className="dropdown__section">
+            <h4 className="dropdown__section-title">Section 2</h4>
+            <ul className="dropdown__list">
+              <li className="dropdown__item">Option 3</li>
+              <li className="dropdown__item">Option 4</li>
+            </ul>
+          </div>
+          <div className="dropdown__section">
+            <h4 className="dropdown__section-title">Section 3</h4>
+            <ul className="dropdown__list">
+              <li className="dropdown__item">Option 5</li>
+              <li className="dropdown__item">Option 6</li>
+            </ul>
+          </div>
+        </div>
       )}
     </div>
   )
-}
-
-const buttonStyle = {
-  padding: '10px 20px',
-  fontSize: '16px',
-  cursor: 'pointer',
-}
-
-const menuStyle = {
-  position: 'absolute',
-  top: '100%',
-  left: 0,
-  backgroundColor: '#fff',
-  border: '1px solid #ccc',
-  listStyle: 'none',
-  padding: 0,
-  margin: 0,
-  width: '150px',
-}
-
-const menuItemStyle = {
-  padding: '10px',
-  cursor: 'pointer',
 }
 
 export default DropdownMenu
