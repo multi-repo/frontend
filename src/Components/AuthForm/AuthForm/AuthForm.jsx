@@ -1,60 +1,53 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
+import { useDispatch, useSelector } from 'react-redux' // Import Redux hooks
+import { loginUser } from '../../../store/authSlice.js' // Import the login action
 import './styles/index.scss'
 
-const AuthForm = ({ onAuthenticate }) => {
-  const [formData, setFormData] = useState({ username: '', password: '' })
-  const [error, setError] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
+const AuthForm = () => {
+  const dispatch = useDispatch()
+  const [formData, setFormData] = useState({
+    username: '',
+    password: '',
+    remember: false,
+  })
+  const { statusLoading, errorMessage, statusError } = useSelector(
+    (state) => state.auth
+  )
   const usernameRef = useRef(null)
 
   useEffect(() => {
     usernameRef.current.focus()
   }, [])
 
-  useEffect(() => {
-    if (error) {
-      const timer = setTimeout(() => setError(''), 3000)
-      return () => clearTimeout(timer)
-    }
-  }, [error])
-
-  useEffect(() => {
-    if (successMessage) {
-      const timer = setTimeout(() => setSuccessMessage(''), 3000)
-      return () => clearTimeout(timer)
-    }
-  }, [successMessage])
-
   const handleChange = useCallback((e) => {
-    const { name, value } = e.target
-    setFormData((prevData) => ({ ...prevData, [name]: value }))
+    const { name, value, type, checked } = e.target
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value,
+    }))
   }, [])
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const { username, password } = formData
+    const { username, password, remember } = formData
 
     if (!username || !password) {
-      setError('Пожалуйста, заполните все поля!')
+      alert('Пожалуйста, заполните все поля!')
       if (!username) usernameRef.current.focus()
       return
     }
 
-    setError('')
-    setSuccessMessage('Авторизация успешна!')
-    console.log('Логин:', username, 'Пароль:', password)
+    // Dispatch the login action with the remember field included
+    dispatch(loginUser(username, password, remember))
 
-    onAuthenticate()
-
-    setFormData({ username: '', password: '' })
+    setFormData({ username: '', password: '', remember: true })
     usernameRef.current.focus()
   }
 
   return (
     <form className="authForm" onSubmit={handleSubmit}>
       <h2>Авторизация</h2>
-      {error && <p className="error">{error}</p>}
-      {successMessage && <p className="success">{successMessage}</p>}
+      {statusError && <p className="error">{errorMessage}</p>}
       <div className="formGroup">
         <label htmlFor="username">Имя пользователя</label>
         <input
@@ -80,8 +73,19 @@ const AuthForm = ({ onAuthenticate }) => {
           placeholder="Введите пароль"
         />
       </div>
-      <button type="submit" className="submitButton">
-        Войти
+      <div className="formGroup">
+        <label htmlFor="remember">Запомнить меня</label>
+        <input
+          className="formInput"
+          type="checkbox"
+          id="remember"
+          name="remember"
+          checked={formData.remember}
+          onChange={handleChange}
+        />
+      </div>
+      <button type="submit" className="submitButton" disabled={statusLoading}>
+        {statusLoading ? 'Загрузка...' : 'Войти'}
       </button>
     </form>
   )
