@@ -1,7 +1,7 @@
 // src/Components/AuthForm/AuthMain.jsx
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { login } from '../../store/authSlice.js'
+import { checkAuthStatus, loginUser } from '../../store/Auth' // Corrected the import path
 import AuthForm from './AuthForm/AuthForm'
 import './AuthMain.scss'
 
@@ -9,8 +9,12 @@ const AuthLayout = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
   const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(checkAuthStatus())
+  }, [dispatch])
+
   const handleAuthentication = () => {
-    dispatch(login())
+    dispatch(loginUser()) // Using the loginUser action instead of login
   }
 
   return (

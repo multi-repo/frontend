@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux' // Import Redux hooks
-import { loginUser } from '../../../store/authSlice.js' // Import the login action
+import { loginUser } from '../../../store/Auth/index'
 import './styles/index.scss'
 
 const AuthForm = () => {
@@ -8,7 +8,7 @@ const AuthForm = () => {
   const [formData, setFormData] = useState({
     username: '',
     password: '',
-    remember: false,
+    remember: true,
   })
   const { statusLoading, errorMessage, statusError } = useSelector(
     (state) => state.auth
@@ -37,7 +37,6 @@ const AuthForm = () => {
       return
     }
 
-    // Dispatch the login action with the remember field included
     dispatch(loginUser(username, password, remember))
 
     setFormData({ username: '', password: '', remember: true })
