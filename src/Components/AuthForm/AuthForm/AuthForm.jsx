@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { useDispatch, useSelector } from 'react-redux' // Import Redux hooks
-import { loginUser } from '../../../store/Auth/index'
+import { useDispatch, useSelector } from 'react-redux'
+import { loginUser } from '../../../store/Auth/index.js'
 import './styles/index.scss'
 
 const AuthForm = () => {
@@ -38,7 +38,6 @@ const AuthForm = () => {
     }
 
     dispatch(loginUser(username, password, remember))
-
     setFormData({ username: '', password: '', remember: true })
     usernameRef.current.focus()
   }

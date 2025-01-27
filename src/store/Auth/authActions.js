@@ -1,5 +1,5 @@
 // src/redux/actions/authActions.js
-import { loginRequest, checkAuthStatusRequest } from './api.js'
+import { loginRequest, checkAuthStatusRequest, logoutRequest } from './api.js'
 import {
   setStatusLoading,
   setStatusError,
@@ -20,6 +20,17 @@ export const loginUser = (username, password) => async (dispatch) => {
     handleError(error, dispatch)
   } finally {
     dispatch(setStatusLoading(false))
+  }
+}
+
+export const logoutUser = () => async (dispatch) => {
+  try {
+    const response = await logoutRequest()
+    dispatch(setAuthStatus(!(response.status === 200)))
+  } catch (error) {
+    dispatch(setAuthStatus(true))
+  } finally {
+    dispatch(setStatusLoading(true))
   }
 }
 
