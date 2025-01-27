@@ -1,0 +1,20 @@
+.menu {
+    display: flex; // Располагаем элементы в строку
+    gap: 15px; // Отступы между ссылками
+  
+    &__link {
+      display: inline-block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #333;
+      font-size: 16px;
+      font-weight: 500;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+  
+      &:hover {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+  

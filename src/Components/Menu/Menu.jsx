@@ -3,13 +3,23 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Routes, Route } from 'react-router-dom'
 import { checkAuthStatus } from '../../store/Auth'
 import AuthLayout from '../AuthForm/AuthMain'
-import MenuLayout from './MenuMain'
+import MenuLayout from './Menu/MenuMain.jsx'
 import AuthButtonTrigger from '../AuthBtn/AuthBtn'
 
 const MenuMainLayout = () => {
   return (
-    <div className="MenuMainLayout">
-      <MenuLayout />
+    <div className="">
+      <Routes>
+        <Route path="/auth" element={<AuthLayout />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <MenuLayout />
+            </>
+          }
+        />
+      </Routes>
     </div>
   )
 }

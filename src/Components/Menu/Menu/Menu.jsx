@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import './styles/index.scss'
+import { Link } from 'react-router-dom'
 
-const DropdownMenu = () => {
+const MenuList = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleMenu = () => {
@@ -9,37 +10,27 @@ const DropdownMenu = () => {
   }
 
   return (
-    <div className="dropdown">
-      <button onClick={toggleMenu} className="dropdown__button">
-        Menu
-      </button>
-      {isOpen && (
-        <div className="dropdown__menu">
-          <div className="dropdown__section">
-            <h4 className="dropdown__section-title">Section 1</h4>
-            <ul className="dropdown__list">
-              <li className="dropdown__item">Option 1</li>
-              <li className="dropdown__item">Option 2</li>
-            </ul>
-          </div>
-          <div className="dropdown__section">
-            <h4 className="dropdown__section-title">Section 2</h4>
-            <ul className="dropdown__list">
-              <li className="dropdown__item">Option 3</li>
-              <li className="dropdown__item">Option 4</li>
-            </ul>
-          </div>
-          <div className="dropdown__section">
-            <h4 className="dropdown__section-title">Section 3</h4>
-            <ul className="dropdown__list">
-              <li className="dropdown__item">Option 5</li>
-              <li className="dropdown__item">Option 6</li>
-            </ul>
-          </div>
-        </div>
-      )}
+    <div className="menu">
+      <Link to="/auth" className="menu__link">
+        Section 1: Option 1
+      </Link>
+      <Link to="/option2" className="menu__link">
+        Option 2
+      </Link>
+      <Link to="/section2-option3" className="menu__link">
+        Section 2: Option 3
+      </Link>
+      <Link to="/section2-option4" className="menu__link">
+        Option 4
+      </Link>
+      <Link to="/section3-option5" className="menu__link">
+        Section 3: Option 5
+      </Link>
+      <Link to="/section3-option6" className="menu__link">
+        Option 6
+      </Link>
     </div>
   )
 }
 
-export default DropdownMenu
+export default MenuList
