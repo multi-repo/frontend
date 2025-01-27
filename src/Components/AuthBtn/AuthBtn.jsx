@@ -20,8 +20,8 @@ const AuthButtonTrigger = () => {
 
   return (
     <div className="auth-button-trigger">
-      <button onClick={handleButtonClick} className="trigger-button">
-        {isAuthenticated ? 'Logout' : 'Go to Auth'} {}
+      <button onClick={handleButtonClick} className="auth-button">
+        {isAuthenticated ? 'Logout' : 'Go to Auth'}
       </button>
     </div>
   )

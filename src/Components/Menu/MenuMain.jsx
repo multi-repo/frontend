@@ -1,11 +1,33 @@
-// src/Components/AuthForm/AuthMain.jsx
-import React, { useState } from 'react'
-import DropdownMenu from './Menu/Menu'
+// src/Components/Menu/MenuMain.jsx
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { Routes, Route } from 'react-router-dom'
+import { checkAuthStatus } from '../../store/Auth/index.js'
+import AuthLayout from '../AuthForm/AuthMain'
+import DropdownMenu from './Menu/Menu.jsx'
+import AuthButtonTrigger from '../AuthBtn/AuthBtn.jsx'
+import './MenuMain.scss'
 
-const MenuLayout = ({ onAuthenticate }) => {
+const MenuLayout = () => {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(checkAuthStatus())
+  }, [dispatch])
+
   return (
-    <div>
-      <DropdownMenu />
+    <div className="MenuLayout">
+      <Routes>
+        <Route path="/auth" element={<AuthLayout />} />
+        <Route
+          path="/"
+          element={
+            <>
+              <DropdownMenu />
+              <AuthButtonTrigger />
+            </>
+          }
+        />
+      </Routes>
     </div>
   )
 }

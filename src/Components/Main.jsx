@@ -9,12 +9,8 @@ import AuthButtonTrigger from './AuthBtn/AuthBtn.jsx'
 
 const MainLayout = () => {
   return (
-    <div className="app">
-      <Routes>
-        <Route path="/auth" element={<AuthLayout />} />
-        <Route path="/" element={<MenuLayout />} />
-      </Routes>
-      <AuthButtonTrigger />
+    <div className="MainLayout">
+      <MenuLayout />
     </div>
   )
 }

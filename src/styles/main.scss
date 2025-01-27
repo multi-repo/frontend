@@ -7,8 +7,6 @@ $font-stack: 'Arial', sans-serif;
   box-sizing: border-box;
 }
 
-
-
 body {
   display: flex;
   justify-content: center;
@@ -16,7 +14,6 @@ body {
   height: 100%;
   width: 100%;
   font-family: $font-stack;
-  background-color: #f0f0f0; 
 }
 
 html, body {
