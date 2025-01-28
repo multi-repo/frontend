@@ -43,53 +43,61 @@ const AuthForm = () => {
   }
 
   return (
-    <form className="authForm" onSubmit={handleSubmit}>
-      <h2>Авторизация</h2>
-      {statusError && <p className="error">{errorMessage}</p>}
-      <div className="formGroup">
-        <label htmlFor="username">Имя пользователя</label>
-        <input
-          className="formInput"
-          type="text"
-          id="username"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-          placeholder="Введите имя пользователя"
-          ref={usernameRef}
-        />
-      </div>
-      <div className="formGroup">
-        <label htmlFor="password">Пароль</label>
-        <input
-          className="formInput"
-          type="password"
-          id="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          placeholder="Введите пароль"
-        />
-      </div>
-      <div className="formGroup">
-        <div className="rmmberC">
-          <label htmlFor="remember">Запомнить меня</label>
-          <div className="rmmberCC">
+    <div className="AuthFormC">
+      <div className="AuthFormImg">
+        <form className="authForm" onSubmit={handleSubmit}>
+          <h2>Авторизация</h2>
+          {statusError && <p className="error">{errorMessage}</p>}
+          <div className="formGroup">
+            <label htmlFor="username">Имя пользователя</label>
             <input
-              className="rmbrChck"
-              type="checkbox"
-              id="remember"
-              name="remember"
-              checked={formData.remember}
+              className="formInput"
+              type="text"
+              id="username"
+              name="username"
+              value={formData.username}
               onChange={handleChange}
+              placeholder="Введите имя пользователя"
+              ref={usernameRef}
             />
           </div>
-        </div>
+          <div className="formGroup">
+            <label htmlFor="password">Пароль</label>
+            <input
+              className="formInput"
+              type="password"
+              id="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Введите пароль"
+            />
+          </div>
+          <div className="formGroup">
+            <div className="rmmberC">
+              <label htmlFor="remember">Запомнить меня</label>
+              <div className="rmmberCC">
+                <input
+                  className="rmbrChck"
+                  type="checkbox"
+                  id="remember"
+                  name="remember"
+                  checked={formData.remember}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+          </div>
+          <button
+            type="submit"
+            className="submitButton"
+            disabled={statusLoading}
+          >
+            {statusLoading ? 'Загрузка...' : 'Войти'}
+          </button>
+        </form>
       </div>
-      <button type="submit" className="submitButton" disabled={statusLoading}>
-        {statusLoading ? 'Загрузка...' : 'Войти'}
-      </button>
-    </form>
+    </div>
   )
 }
 

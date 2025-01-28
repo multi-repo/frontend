@@ -6,13 +6,13 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
-  width: 100%;
-  max-width: 400px;
+  height: 45vh;
+  width: 20vw;
   padding: 30px;
   border: 1px solid $border-color;
   border-radius: $border-radius;
-  background-color: rgba(255, 255, 255, 0.4); 
-  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.4); 
+  backdrop-filter: blur(15px);
   box-shadow: $box-shadow-base;
   transition: box-shadow 0.3s ease, backdrop-filter 0.3s ease;
 
@@ -76,4 +76,21 @@
       font-size: 14px;
     }
   }
+}
+
+.AuthFormImg{
+  background: url('.../../../../../../../assets/AuthWall.jpg');
+}
+
+.AuthFormC{
+  margin-top: 30vh;
+  margin-bottom: 30vh;
+  background-color: rgba(0, 0, 0, 0.5); 
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 75vw);
+  height: calc(100% - 45vh);
+  border-radius: 100px;
 }

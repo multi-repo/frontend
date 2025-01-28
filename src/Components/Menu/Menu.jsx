@@ -1,8 +1,5 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { checkAuthStatus } from '../../store/Auth'
-import AuthLayout from '../AuthForm/AuthMain'
 import MenuLayout from './Menu/MenuMain.jsx'
 import './Menu.scss'
 
@@ -10,7 +7,6 @@ const MenuMainLayout = () => {
   return (
     <div className="menuC">
       <Routes>
-        <Route path="/auth" element={<AuthLayout />} />
         <Route
           path="/"
           element={
