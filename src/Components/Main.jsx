@@ -1,15 +1,12 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { Routes, Route } from 'react-router-dom'
-import { checkAuthStatus } from '../store/Auth/index.js'
-import AuthLayout from './AuthForm/AuthMain'
 import './styles/index.scss'
 import MenuMainLayout from './Menu/Menu.jsx'
+import WhiteLayout from './WhiteForm/WhiteMain.jsx'
 
 const MainLayout = () => {
   return (
     <div className="MainLayout">
       <MenuMainLayout />
+      <WhiteLayout />
     </div>
   )
 }

@@ -3,10 +3,11 @@
     padding-top: 2vh;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: space-around;
+    justify-content: space-between;
     height: fit-content;
     background: transparent;
     box-sizing: border-box;
+    width: 95%;
   }
   
   .MenuLayout .auth-layout {
