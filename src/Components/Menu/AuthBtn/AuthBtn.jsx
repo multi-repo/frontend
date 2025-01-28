@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { logoutUser } from '../../store/Auth/index.js'
+import { logoutUser } from '../../../store/Auth/index.js'
 import './styles/index.scss'
 
 const AuthButtonTrigger = () => {

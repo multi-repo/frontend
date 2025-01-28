@@ -22,3 +22,26 @@
     color: rgba(51, 51, 51, 0.6) !important;
   }
 }
+
+.rmmberC{
+  display: flex;
+  justify-content: flex-start;
+  align-content: flex-end;
+  width: 100%;
+}
+
+.rmbrChck{
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: $label-color;
+  font-family: $font-family;
+  margin-right: 1vh;
+}
+
+.rmmberCC{
+  flex-grow: 1; 
+  display: flex;
+  justify-content: flex-end;
+}

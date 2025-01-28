@@ -4,7 +4,6 @@ import { Routes, Route } from 'react-router-dom'
 import { checkAuthStatus } from '../../store/Auth'
 import AuthLayout from '../AuthForm/AuthMain'
 import MenuLayout from './Menu/MenuMain.jsx'
-import AuthButtonTrigger from '../AuthBtn/AuthBtn'
 
 const MenuMainLayout = () => {
   return (

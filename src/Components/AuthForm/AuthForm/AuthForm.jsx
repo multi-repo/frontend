@@ -72,15 +72,19 @@ const AuthForm = () => {
         />
       </div>
       <div className="formGroup">
-        <label htmlFor="remember">Запомнить меня</label>
-        <input
-          className="formInput"
-          type="checkbox"
-          id="remember"
-          name="remember"
-          checked={formData.remember}
-          onChange={handleChange}
-        />
+        <div className="rmmberC">
+          <label htmlFor="remember">Запомнить меня</label>
+          <div className="rmmberCC">
+            <input
+              className="rmbrChck"
+              type="checkbox"
+              id="remember"
+              name="remember"
+              checked={formData.remember}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
       </div>
       <button type="submit" className="submitButton" disabled={statusLoading}>
         {statusLoading ? 'Загрузка...' : 'Войти'}
