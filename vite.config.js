@@ -3,6 +3,9 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 
 export default defineConfig(({ command, mode }) => {
+  
+  base: '/'
+
   const isProd = process.env.VITE_APP_ENV === 'prod';
 
   return {
