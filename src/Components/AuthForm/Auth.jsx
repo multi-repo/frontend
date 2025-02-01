@@ -4,11 +4,9 @@ import AuthLayout from '../AuthForm/AuthMain'
 
 const AuthMain = () => {
   return (
-    <div className="AuthC">
-      <Routes>
-        <Route path="/auth" element={<AuthLayout />} />
-      </Routes>
-    </div>
+    <Routes>
+      <Route path="/auth" element={<AuthLayout />} />
+    </Routes>
   )
 }
 

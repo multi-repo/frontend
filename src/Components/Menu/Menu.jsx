@@ -5,18 +5,16 @@ import './Menu.scss'
 
 const MenuMainLayout = () => {
   return (
-    <div className="menuC">
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <MenuLayout />
-            </>
-          }
-        />
-      </Routes>
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <MenuLayout />
+          </>
+        }
+      />
+    </Routes>
   )
 }
 

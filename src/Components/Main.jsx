@@ -1,18 +1,24 @@
-import './styles/index.scss'
-import MenuMainLayout from './Menu/Menu.jsx'
-import WhiteLayout from './WhiteForm/WhiteMain.jsx'
-import { Route, Routes } from 'react-router-dom'
-import AuthLayout from './AuthForm/AuthMain'
-import AuthMain from './AuthForm/Auth'
+import React, { Suspense } from 'react';
+import './styles/index.scss';
+import { Route, Routes } from 'react-router-dom';
+
+// Ленивая загрузка компонентов
+const MenuMainLayout = React.lazy(() => import('./Menu/Menu.jsx'));
+const WhiteLayout = React.lazy(() => import('./WhiteForm/WhiteMain.jsx'));
+const AuthLayout = React.lazy(() => import('./AuthForm/AuthMain'));
+const AuthMain = React.lazy(() => import('./AuthForm/Auth'));
 
 const MainLayout = () => {
   return (
     <div className="MainLayout">
-      <AuthMain />
-      <MenuMainLayout />
-      <WhiteLayout />
+      <Suspense fallback={<div>Загрузка...</div>}>
+        {/* Компоненты будут загружаться лениво */}
+        <AuthMain />
+        <MenuMainLayout />
+        <WhiteLayout />
+      </Suspense>
     </div>
-  )
+  );
 }
 
-export default MainLayout
+export default MainLayout;
