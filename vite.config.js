@@ -2,22 +2,23 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-export default defineConfig(() => {
-  const isProd = process.env.VITE_APP_ENV === 'production';
+export default defineConfig(({ command, mode }) => {
+  const isProd = process.env.VITE_APP_ENV === 'prod';
 
   return {
     root: path.resolve(__dirname, 'src'),
 
     build: {
       outDir: path.resolve(__dirname, 'dist'),
-      sourcemap: !isProd,
+      sourcemap: !isProd, 
       terserOptions: isProd
         ? {
             compress: {
-              drop_console: true,
+              drop_console: true, 
             },
           }
         : {},
+      chunkSizeWarningLimit: 500, 
     },
 
     plugins: [react()],
@@ -29,9 +30,20 @@ export default defineConfig(() => {
     },
 
     server: {
-      port: 9000,
+      port: 9000, 
       open: true,
       historyApiFallback: true,
+    },
+
+    optimizeDeps: {
+      include: isProd ? ['react', 'react-dom'] : [], 
+    },
+
+    css: {
+      postcss: {
+        plugins: [
+        ],
+      },
     },
   };
 });
