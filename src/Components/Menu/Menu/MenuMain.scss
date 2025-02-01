@@ -10,7 +10,7 @@
     width: 95%;
   }
   
-  .MenuLayout .auth-layout {
+  .auth-layout {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -19,7 +19,7 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   
-  .MenuLayout .dropdown-menu {
+  .dropdown-menu {
     position: fixed;
     top: 20px;
     right: 20px;
@@ -30,7 +30,7 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
   
-  .MenuLayout .auth-btn-trigger {
+  .auth-btn-trigger {
     margin-top: 20px;
     padding: 10px 20px;
     background-color: #007bff;
@@ -51,7 +51,7 @@
     }
   }
   
-  /* Mobile responsiveness */
+
   @media (max-width: 768px) {
     .MenuLayout {
       padding: 10px;

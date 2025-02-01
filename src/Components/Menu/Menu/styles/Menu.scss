@@ -1,20 +1,41 @@
 .menu {
-    display: flex; // Располагаем элементы в строку
-    gap: 15px; // Отступы между ссылками
-  
-    &__link {
+  display: flex;
+  gap: 2vw; 
+
+  &__link {
       display: inline-block;
-      padding: 10px 15px;
+      padding: 1vh 1.5vw; 
       text-decoration: none;
       color: #333;
-      font-size: 16px;
+      font-size: 1.1vh; 
       font-weight: 500;
       border-radius: 4px;
       transition: background-color 0.3s ease;
-  
+
       &:hover {
-        background-color: #f0f0f0;
+          background-color: #f0f0f0;
       }
-    }
   }
-  
+}
+
+@media (max-width: 768px) {
+  .menu {
+      gap: 1.5vw;
+
+      &__link {
+          padding: 1vh 1.5vw;
+          font-size: 3vw;
+      }
+  }
+}
+
+@media (max-width: 480px) {
+  .menu {
+      gap: 1vw;
+
+      &__link {
+          padding: 0.8vh 1vw;
+          font-size: 4vw;
+      }
+  }
+}
