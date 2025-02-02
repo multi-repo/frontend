@@ -1,0 +1,37 @@
+.OAuth-Icons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  gap: 6vw;
+}
+
+.google-icon,
+.github-icon {
+  width: 1.5vw;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 1440px) {
+    gap: 10vw;
+    width: 3vw
+  }
+
+  @media (max-width: 1024px) {
+    gap: 10vw;
+    width: 5vw
+  }
+
+  @media (max-width: 768px) {
+    gap: 14vw;
+    width: 8vw
+  }
+
+  @media (max-width: 480px) {
+    gap: 14vw;
+    width: 8vw
+  }
+}

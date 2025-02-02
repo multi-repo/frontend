@@ -1,14 +1,17 @@
 @use 'variables' as *;
 
+$base-padding-vertical: 1.3vh;
+$base-padding-horizontal: 1.3vh;
+
 .submitButton {
   width: 100%;
-  padding: 12px 15px;
+  padding: $base-padding-vertical $base-padding-horizontal;
   background-color: $primary-color;
   color: #ffffff;
   border: none;
-  border-radius: 8px;
+  border-radius: 1.8vh;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1.2vh;
   font-weight: bold;
   font-family: $font-family;
   transition:
@@ -23,5 +26,25 @@
   &:active {
     background-color: $primary-color-active;
     transform: translateY(0);
+  }
+
+  @media (max-width: 1440px) {
+    font-size: 1.2vh;
+    padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
+  }
+
+  @media (max-width: 1024px) {
+    font-size: 1.2vh;
+    padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
+  }
+
+  @media (max-width: 768px) {
+    font-size: 1.5vh;
+    padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 1.5vh;
+    padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
   }
 }

@@ -49,7 +49,9 @@ const AuthForm = () => {
           <h2>Авторизация</h2>
           {statusError && <p className="error">{errorMessage}</p>}
           <div className="formGroup">
-            <label htmlFor="username">Имя пользователя</label>
+            <label htmlFor="username" className="form__label">
+              Имя пользователя
+            </label>
             <input
               className="formInput"
               type="text"
@@ -62,7 +64,9 @@ const AuthForm = () => {
             />
           </div>
           <div className="formGroup">
-            <label htmlFor="password">Пароль</label>
+            <label htmlFor="password" className="form__label">
+              Пароль
+            </label>
             <input
               className="formInput"
               type="password"
@@ -72,10 +76,13 @@ const AuthForm = () => {
               onChange={handleChange}
               placeholder="Введите пароль"
             />
+            <label className="form__label__forgot-pass">Forgot password?</label>
           </div>
           <div className="formGroup">
             <div className="rmmberC">
-              <label htmlFor="remember">Запомнить меня</label>
+              <label htmlFor="remember" className="form__label">
+                Запомнить меня
+              </label>
               <div className="rmmberCC">
                 <input
                   className="rmbrChck"
@@ -87,14 +94,41 @@ const AuthForm = () => {
                 />
               </div>
             </div>
+            <button
+              type="submit"
+              className="submitButton"
+              disabled={statusLoading}
+            >
+              {statusLoading ? 'Загрузка...' : 'Войти'}
+            </button>
           </div>
-          <button
-            type="submit"
-            className="submitButton"
-            disabled={statusLoading}
-          >
-            {statusLoading ? 'Загрузка...' : 'Войти'}
-          </button>
+
+          <div className="OAuth-Icons">
+            <a
+              className="google__oauth__icon"
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/2875/2875404.png"
+                alt="Sign in with Google"
+                className="google-icon"
+              />
+            </a>
+            <a
+              className="github__oauth__icon"
+              href=""
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
+                alt="Sign in with Github"
+                className="github-icon"
+              />
+            </a>
+          </div>
         </form>
       </div>
     </div>
