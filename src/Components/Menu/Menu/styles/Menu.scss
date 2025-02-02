@@ -1,41 +1,109 @@
 .menu {
+  width: 100vw;
   display: flex;
-  gap: 2vw; 
+  gap: 2vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgb(255, 255, 255);
+  padding: 0.6vh 0.1vw;
+  z-index: 1000;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  &__leftc{
+    display: flex;
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__rightc{
+    display: flex;
+    flex-grow: 1; 
+    justify-content: flex-end;
+  }
+
+  &__auth-button{
+
+    align-self: center;
+  }
+
+  &__toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      display: block;
+    }
+  }
+
+  &__links {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    @media (max-width: 768px) {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &__links--open {
+    display: flex;
+    width: fit-content;
+    border-radius: 1vh;
+    margin-top: 1vh;
+  }
 
   &__link {
-      display: inline-block;
-      padding: 1vh 1.5vw; 
-      text-decoration: none;
-      color: #333;
-      font-size: 1.1vh; 
-      font-weight: 500;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
+    white-space: nowrap;
+    padding: 1vh 1.5vw;
+    text-decoration: none;
+    color: #333;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 1vh;
+    transition: background-color 0.3s ease;
 
-      &:hover {
-          background-color: #f0f0f0;
-      }
+    &:hover {
+      background-color: #f0f0f0;
+    }
+
+    @media (max-width: 768px) {
+      padding: 2vh;
+    }
+
+    @media (max-width: 480px) {
+      padding: 1vh 2vw;
+    }
   }
 }
 
 @media (max-width: 768px) {
   .menu {
-      gap: 1.5vw;
-
-      &__link {
-          padding: 1vh 1.5vw;
-          font-size: 3vw;
-      }
+    gap: 1.5vw;
   }
 }
 
 @media (max-width: 480px) {
   .menu {
-      gap: 1vw;
+    gap: 1vw;
 
-      &__link {
-          padding: 0.8vh 1vw;
-          font-size: 4vw;
-      }
+    &__link {
+      padding: 0.8vh 1vw;
+    }
   }
 }

@@ -74,7 +74,9 @@
     border-radius: 0px;
     height: 100vh;
     width: 100vw;
-    padding: 5vw;
+    padding: 6vw;
+    background-color: rgba(218, 218, 218, 0);
+
     h2 {
       font-size: 3vh;
       margin-bottom: 4vh;
@@ -98,9 +100,10 @@
   @media (max-width: 480px) {
     border-radius: 0px;
     width: 100vw;
-    padding: 5vw;
+    padding: 6vw;
     height: 100vh;
     width: 100vw;
+    background-color: rgba(0, 0, 0, 0.0);
     h2 {
       font-size: 3vh;
       margin-bottom: 4vh;
@@ -151,8 +154,6 @@
   @media (max-width: 480px) {
     width: 95vw;
     height: 100vh;
-    margin-top: 15vh;
-    margin-bottom: 15vh;
   }
 
   @media (min-width: 1440px) {

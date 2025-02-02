@@ -17,7 +17,6 @@ const MenuLayout = () => {
   return (
     <div className="MenuLayout">
       <MenuList />
-      <AuthButtonTrigger />
     </div>
   )
 }
