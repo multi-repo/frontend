@@ -29,7 +29,7 @@
 
   &__toggle {
     display: none;
-    font-size: 2rem;
+    font-size: clamp(1.3rem, 1.4vw, 1.4rem);
     background: none;
     border: none;
     color: #333;
