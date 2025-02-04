@@ -20,7 +20,7 @@
     "web-vitals": "^4.2.4"
   },
   "scripts": {
-    "start": "VITE_APP_ENV=development vite",
+    "start": "vite --mode development",
     "build": "vite build --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

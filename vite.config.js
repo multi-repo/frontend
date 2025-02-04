@@ -6,7 +6,7 @@ export default defineConfig(({ command, mode }) => {
   
   base: '/'
 
-  const isProd = process.env.VITE_APP_ENV === 'prod';
+  const isProd = mode === 'production';
 
   return {
     root: path.resolve(__dirname, 'src'),

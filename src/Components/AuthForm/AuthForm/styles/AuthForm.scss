@@ -31,7 +31,11 @@
   }
 
   .formGroup {
-    margin-bottom: 4vh;
+
+
+    margin-bottom: 2vh;
+    margin-top: 2vh;
+
 
     .form__label__forgot-pass {
       display: block;
@@ -127,6 +131,14 @@
   border-radius: $border-radius;
   background: url('.../../../../../../../assets/AuthWall.jpg') no-repeat
     center/cover;
+
+    @media (max-width: 768px) {
+      border-radius: 0px;
+    }
+  
+    @media (max-width: 480px) {
+      border-radius: 0px;
+    }
 }
 
 .AuthFormC {

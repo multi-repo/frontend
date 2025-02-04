@@ -1,6 +1,10 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser } from '../../../store/Auth/index.js'
+import InputField from './InputField'
+import CheckboxField from './CheckboxField'
+import OAuthButtons from './OAuthButtons'
+import SubmitButton from './SubmitButton'
 import './styles/index.scss'
 
 const AuthForm = () => {
@@ -46,16 +50,16 @@ const AuthForm = () => {
     <div className="AuthFormC">
       <div className="AuthFormImg">
         <form className="authForm" onSubmit={handleSubmit}>
-          <h2>Авторизация</h2>
           {statusError && <p className="error">{errorMessage}</p>}
+
           <div className="formGroup">
-            <label htmlFor="username" className="form__label">
-              Имя пользователя
-            </label>
-            <input
-              className="formInput"
+            <h2>Авторизация</h2>
+          </div>
+
+          <div className="formGroup">
+            <InputField
+              label="Имя пользователя"
               type="text"
-              id="username"
               name="username"
               value={formData.username}
               onChange={handleChange}
@@ -63,14 +67,11 @@ const AuthForm = () => {
               ref={usernameRef}
             />
           </div>
+
           <div className="formGroup">
-            <label htmlFor="password" className="form__label">
-              Пароль
-            </label>
-            <input
-              className="formInput"
+            <InputField
+              label="Пароль"
               type="password"
-              id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
@@ -78,56 +79,18 @@ const AuthForm = () => {
             />
             <label className="form__label__forgot-pass">Forgot password?</label>
           </div>
-          <div className="formGroup">
-            <div className="rmmberC">
-              <label htmlFor="remember" className="form__label">
-                Запомнить меня
-              </label>
-              <div className="rmmberCC">
-                <input
-                  className="rmbrChck"
-                  type="checkbox"
-                  id="remember"
-                  name="remember"
-                  checked={formData.remember}
-                  onChange={handleChange}
-                />
-              </div>
-            </div>
-            <button
-              type="submit"
-              className="submitButton"
-              disabled={statusLoading}
-            >
-              {statusLoading ? 'Загрузка...' : 'Войти'}
-            </button>
-          </div>
 
-          <div className="OAuth-Icons">
-            <a
-              className="google__oauth__icon"
-              href=""
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/2875/2875404.png"
-                alt="Sign in with Google"
-                className="google-icon"
-              />
-            </a>
-            <a
-              className="github__oauth__icon"
-              href=""
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png"
-                alt="Sign in with Github"
-                className="github-icon"
-              />
-            </a>
+          <div className="formGroup">
+            <CheckboxField
+              label="Запомнить меня"
+              name="remember"
+              checked={formData.remember}
+              onChange={handleChange}
+            />
+            <SubmitButton isLoading={statusLoading} />
+          </div>
+          <div className="formGroup">
+            <OAuthButtons />
           </div>
         </form>
       </div>
