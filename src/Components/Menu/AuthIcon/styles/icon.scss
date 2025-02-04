@@ -1,0 +1,32 @@
+.authButton {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #2196f3;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center; 
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: black;
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+  }
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

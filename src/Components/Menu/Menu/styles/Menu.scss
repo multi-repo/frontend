@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   background: rgb(255, 255, 255);
-  padding: 0.6vh 0.1vw;
+  padding: 1px 1.5vw;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 
@@ -29,7 +29,7 @@
 
   &__toggle {
     display: none;
-    font-size: clamp(1.3rem, 1.4vw, 1.4rem);
+    font-size: clamp(1.3rem, 1.6rem, 1.9rem);
     background: none;
     border: none;
     color: #333;
@@ -63,18 +63,16 @@
   &__links--open {
     display: flex;
     width: fit-content;
-    border-radius: 1vh;
     margin-top: 1vh;
   }
 
   &__link {
     white-space: nowrap;
-    padding: 1vh 1.5vw;
+    padding: 0.6vh 1.5vw;
     text-decoration: none;
     color: #333;
     font-size: 1rem;
     font-weight: 500;
-    border-radius: 1vh;
     transition: background-color 0.3s ease;
 
     &:hover {
@@ -91,16 +89,16 @@
   }
 
   @media (max-width: 768px) {
-    padding: 0.6vh 1.2vw;
+    padding: 0.4vh 1vw;
     gap: 1.5vw;
   }
 
   @media (max-width: 480px) {
 
-    padding: 0.6vh 1.5vw;
+    padding: 0.5vh 1vw;
 
     &__link {
-      padding: 0.8vh 1vw;
+      padding: 0.5vh 1vw;
     }
   }
 }

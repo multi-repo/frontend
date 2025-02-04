@@ -3,24 +3,17 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { logoutUser } from '../../../store/Auth/index.js'
 import './styles/index.scss'
+import { useAuthButtonHandler } from '../../../hooks/auth/auth-button-handler.jsx'
 
 const AuthButtonTrigger = () => {
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-
-  const handleButtonClick = async () => {
-    if (isAuthenticated) {
-      dispatch(logoutUser())
-      navigate('/')
-    } else {
-      navigate('/auth')
-    }
-  }
+  const { isAuthenticated, handleButtonClick } = useAuthButtonHandler()
 
   return (
     <div className="auth-button-trigger">
-      <button onClick={handleButtonClick} className="auth-button">
+      <button
+        onClick={handleButtonClick}
+        className="auth-button-trigger__auth-button"
+      >
         {isAuthenticated ? 'Logout' : 'Go to Auth'}
       </button>
     </div>

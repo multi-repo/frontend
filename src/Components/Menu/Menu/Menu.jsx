@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './styles/index.scss'
 import { Link } from 'react-router-dom'
 import AuthButtonTrigger from '../AuthBtn/AuthBtn'
+import AuthIcon from '../AuthIcon/AuthIcon'
 
 const MenuList = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -39,6 +40,7 @@ const MenuList = () => {
       <div className="menu__rightc">
         <div className="menu__auth-button">
           <AuthButtonTrigger />
+          <AuthIcon />
         </div>
       </div>
     </div>
