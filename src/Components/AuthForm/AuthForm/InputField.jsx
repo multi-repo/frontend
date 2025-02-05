@@ -4,7 +4,7 @@ const InputField = forwardRef(
   ({ label, type, name, value, onChange, placeholder }, ref) => {
     return (
       <>
-        <label htmlFor={name} className="form__label">
+        <label htmlFor={name} className="formGroup__label">
           {label}
         </label>
         <input

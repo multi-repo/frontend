@@ -12,3 +12,22 @@ $box-shadow-hover: 0 15px 25px rgba(0, 0, 0, 0.15);
 $focus-box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
 $border-radius: 3vh;
 $font-family: 'Arial', sans-serif;
+$input-padding: 0.8vh;
+
+@mixin responsive-font($min, $max) {
+  @media (max-width: 1440px) {
+    font-size: clamp(#{$min}, 2vw, #{$max});
+  }
+
+  @media (max-width: 1024px) {
+    font-size: clamp(#{$min}, 2.2vw, #{$max});
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(#{$min}, 3.2vw, #{$max});
+  }
+
+  @media (max-width: 480px) {
+    font-size: clamp(#{$min}, 5.1vw, #{$max});
+  }
+}

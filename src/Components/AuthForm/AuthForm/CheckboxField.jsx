@@ -4,7 +4,7 @@ const CheckboxField = ({ label, name, checked, onChange }) => {
   return (
     <div className="formGroup">
       <div className="rmmberC">
-        <label htmlFor={name} className="form__label">
+        <label htmlFor={name} className="formGroup__label">
           {label}
         </label>
         <div className="rmmberCC">

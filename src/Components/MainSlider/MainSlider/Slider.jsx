@@ -26,7 +26,7 @@ const Slider = () => {
 
   const ImgProps = {
     className: 'image',
-    initial: { scale: 1.1 },
+    initial: { scale: 1 },
     animate: { scale: 1 },
     transition: { duration: 0.8 },
     style: { backgroundImage: `url(${images[currentIndex]})` },
@@ -37,29 +37,71 @@ const Slider = () => {
     whileTap: { scale: 0.8 },
   }
 
+  const ArrowProps = {
+    whileHover: {
+      scale: 1.1,
+      translateY: '-50%',
+    },
+    whileTap: {
+      scale: 0.95,
+      translateY: '-50%',
+    },
+    className: 'arrowButton',
+    style: {
+      translateY: '-50%',
+      transformOrigin: 'center',
+    },
+  }
+
   const variants = {
     hidden: (direction) => ({
       x: direction === 'right' ? '100%' : '-100%',
-      opacity: 0,
-      scale: 0.8,
     }),
     visible: {
       x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, ease: 'easeInOut' },
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 20,
+      },
     },
     exit: (direction) => ({
       x: direction === 'right' ? '-100%' : '100%',
-      opacity: 0,
-      scale: 0.8,
-      transition: { duration: 0.5, ease: 'easeInOut' },
+      transition: {
+        type: 'spring',
+        stiffness: 100,
+        damping: 20,
+      },
     }),
   }
 
   return (
     <div className="sliderContainer">
-      <AnimatePresence mode="wait" custom={direction} initial={false}>
+      {/* Left Arrow */}
+      <motion.button
+        {...ArrowProps}
+        className="arrowButton leftArrow"
+        onClick={prevSlide}
+        aria-label="Previous slide"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+        </svg>
+      </motion.button>
+
+      {/* Right Arrow */}
+      <motion.button
+        {...ArrowProps}
+        className="arrowButton rightArrow"
+        onClick={nextSlide}
+        aria-label="Next slide"
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+        </svg>
+      </motion.button>
+
+      <AnimatePresence mode="popLayout" custom={direction} initial={false}>
         <motion.div
           key={currentIndex}
           custom={direction}

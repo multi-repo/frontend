@@ -50,11 +50,11 @@ const AuthForm = () => {
     <div className="AuthFormC">
       <div className="AuthFormImg">
         <form className="authForm" onSubmit={handleSubmit}>
-          {statusError && <p className="error">{errorMessage}</p>}
-
           <div className="formGroup">
             <h2>Авторизация</h2>
           </div>
+
+          {statusError && <p className="error">{errorMessage}</p>}
 
           <div className="formGroup">
             <InputField
@@ -77,7 +77,7 @@ const AuthForm = () => {
               onChange={handleChange}
               placeholder="Введите пароль"
             />
-            <label className="form__label__forgot-pass">Forgot password?</label>
+            <label className="formGroup__forgot-pass">Forgot password?</label>
           </div>
 
           <div className="formGroup">

@@ -9,6 +9,7 @@
   height: 60vh;
   width: 30vw;
   padding: 8vh;
+  min-height: fit-content;
   border: 1px solid $border-color;
   border-radius: $border-radius;
   background-color: rgba(0, 0, 0, 0.4);
@@ -31,28 +32,28 @@
   }
 
   .formGroup {
-
-
     margin-bottom: 2vh;
     margin-top: 2vh;
 
-
-    .form__label__forgot-pass {
+    &__forgot-pass {
       display: block;
       margin-top: 1vh;
       font-weight: 600;
-      font-size: 1.2vh;
+      font-size: clamp(0.8rem, 0.6vw, 6rem);
       color: $label-color;
       font-family: $font-family;
+
+      @include responsive-font(0.8rem, 4rem);
     }
 
-    .form__label {
+    &__label {
       display: block;
       margin-bottom: 1vh;
       font-weight: 600;
-      font-size: 1.2vh;
+      font-size: clamp(0.8rem, 0.6vw, 6rem);
       color: $label-color;
       font-family: $font-family;
+      @include responsive-font(0.8rem, 4rem);
     }
   }
 
@@ -82,23 +83,9 @@
     background-color: rgba(218, 218, 218, 0);
 
     h2 {
-      font-size: 3vh;
-      margin-bottom: 4vh;
+      font-size: clamp(0.7rem, 5.1vw, 5rem);
+      margin-bottom: 4vw;
     }
-
-    .formGroup {
-      margin-bottom: 4vh;
-
-      .form__label {
-        margin-bottom: 1vh;
-        font-size: 1.8vh;
-      }
-
-      .form__label__forgot-pass {
-        font-size: 1.5vh;
-      }
-    }
-
   }
 
   @media (max-width: 480px) {
@@ -107,22 +94,10 @@
     padding: 6vw;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0);
     h2 {
-      font-size: 3vh;
+      font-size: clamp(0.7rem, 8.5vw, 5rem);
       margin-bottom: 4vh;
-    }
-
-    .formGroup {
-      margin-bottom: 4vh;
-
-      .form__label {
-        margin-bottom: 1vh;
-        font-size: 1.8vh;
-      }
-      .form__label__forgot-pass {
-        font-size: 1.5vh;
-      }
     }
   }
 }
@@ -132,13 +107,13 @@
   background: url('.../../../../../../../assets/AuthWall.jpg') no-repeat
     center/cover;
 
-    @media (max-width: 768px) {
-      border-radius: 0px;
-    }
-  
-    @media (max-width: 480px) {
-      border-radius: 0px;
-    }
+  @media (max-width: 768px) {
+    border-radius: 0px;
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 0px;
+  }
 }
 
 .AuthFormC {

@@ -11,7 +11,7 @@ $base-padding-horizontal: 1.3vh;
   border: none;
   border-radius: 1.8vh;
   cursor: pointer;
-  font-size: 1.2vh;
+  font-size: clamp(0.8rem, 0.6vw, 6rem);
   font-weight: bold;
   font-family: $font-family;
   transition:
@@ -28,23 +28,21 @@ $base-padding-horizontal: 1.3vh;
     transform: translateY(0);
   }
 
+  @include responsive-font(0.8rem, 4rem);
+
   @media (max-width: 1440px) {
-    font-size: 1.2vh;
-    padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
+    padding: calc($base-padding-vertical * 1) calc($base-padding-horizontal * 1.8);
   }
 
   @media (max-width: 1024px) {
-    font-size: 1.2vh;
-    padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
+    padding: calc($base-padding-vertical * 1.2) calc($base-padding-horizontal * 1.8);
   }
 
   @media (max-width: 768px) {
-    font-size: 1.5vh;
     padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
   }
 
   @media (max-width: 480px) {
-    font-size: 1.5vh;
     padding: calc($base-padding-vertical * 1.35) calc($base-padding-horizontal * 1.8);
   }
 }
