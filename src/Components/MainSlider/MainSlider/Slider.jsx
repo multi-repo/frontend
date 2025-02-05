@@ -24,6 +24,19 @@ const Slider = () => {
     setCurrentIndex(index)
   }
 
+  const ImgProps = {
+    className: 'image',
+    initial: { scale: 1.1 },
+    animate: { scale: 1 },
+    transition: { duration: 0.8 },
+    style: { backgroundImage: `url(${images[currentIndex]})` },
+  }
+
+  const DotsProps = {
+    whileHover: { scale: 1.2 },
+    whileTap: { scale: 0.8 },
+  }
+
   const variants = {
     hidden: (direction) => ({
       x: direction === 'right' ? '100%' : '-100%',
@@ -68,30 +81,11 @@ const Slider = () => {
                 key={index}
                 className={`dot ${index === currentIndex ? 'activeDot' : 'inactiveDot'}`}
                 onClick={() => goToSlide(index)}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.8 }}
+                {...DotsProps}
               />
             ))}
           </div>
-          <motion.div
-            className="image"
-            initial={{ scale: 1.1 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ backgroundImage: `url(${images[currentIndex]})` }}
-          />
-{/* 
-          <motion.div
-            className="textContainer"
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <h2 className="title">Slide {currentIndex + 1}</h2>
-            <p className="description">
-              Discover amazing content with our seamless slider experience
-            </p>
-          </motion.div> */}
+          <motion.div {...ImgProps} />
         </motion.div>
       </AnimatePresence>
     </div>

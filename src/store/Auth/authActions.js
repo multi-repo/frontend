@@ -26,7 +26,7 @@ export const loginUser = (username, password) => async (dispatch) => {
 export const logoutUser = () => async (dispatch) => {
   try {
     const response = await logoutRequest()
-    dispatch(setAuthStatus(!(response.status === 200)))
+    dispatch(setAuthStatus(response.status !== 200))
   } catch (error) {
     dispatch(setAuthStatus(true))
   } finally {

@@ -4,7 +4,14 @@ import Slider from './MainSlider/Slider'
 const SliderLayout = () => {
   return (
     <Routes>
-      <Route path="/" element={<> <Slider /> </>} />
+      <Route
+        path="/"
+        element={
+          <>
+            <Slider />{' '}
+          </>
+        }
+      />
     </Routes>
   )
 }
