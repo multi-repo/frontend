@@ -5,10 +5,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgb(255, 255, 255);
+
   padding: 1px 1.5vw;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+  &__styles {
+    &__light {
+      background: rgb(255, 255, 255);
+    }
+    &__dark {
+      background: rgb(16, 92, 180);
+    }
+  }
 
   &__leftc {
     display: flex;
@@ -94,7 +103,6 @@
   }
 
   @media (max-width: 480px) {
-
     padding: 0.5vh 1vw;
 
     &__link {

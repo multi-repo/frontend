@@ -3,16 +3,24 @@ import './styles/index.scss'
 import { Link } from 'react-router-dom'
 import AuthButtonTrigger from '../AuthBtn/AuthBtn'
 import AuthIcon from '../AuthIcon/AuthIcon'
+import ThemeSwitcher from '../ThemeSwitcher/Swithcer'
+import { switchTheme } from '../../../store/Theme/slice'
+import { useDispatch, useSelector } from 'react-redux'
 
 const MenuList = () => {
   const [isOpen, setIsOpen] = useState(false)
+
+  const theme = useSelector((state) => state.theme.theme)
+  const dispatch = useDispatch()
 
   const toggleMenu = () => {
     setIsOpen(!isOpen)
   }
 
   return (
-    <div className="menu">
+    <div
+      className={`menu ${theme === 'light' ? 'menu__styles__light' : 'menu__styles__dark'}`}
+    >
       <button className="menu__toggle" onClick={toggleMenu}>
         &#9776;
       </button>
@@ -38,8 +46,10 @@ const MenuList = () => {
         </div>
       </div>
       <div className="menu__rightc">
+        <ThemeSwitcher />
         <div className="menu__auth-button">
           <AuthButtonTrigger />
+
           <AuthIcon />
         </div>
       </div>

@@ -59,10 +59,11 @@
 
   .error {
     color: $error-color;
-    font-size: 1.2vh;
+    font-size: clamp(0.8rem, 0.6vw, 1rem);
     margin-bottom: 15px;
     text-align: center;
     font-family: $font-family;
+    @include responsive-font(0.8rem, 1rem);
   }
 
   @media (max-width: 1440px) {
