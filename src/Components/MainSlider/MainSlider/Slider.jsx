@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import './styles/index.scss'
 import image1 from '../../../../assets/SliderLayout/photo-1494783367193-149034c05e8f.avif'
+import { wrap } from 'popmotion'
+import { variants } from './variants'
 
 const images = [image1, image1, image1]
 
@@ -11,12 +13,12 @@ const Slider = () => {
 
   const nextSlide = () => {
     setDirection('right')
-    setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1))
+    setCurrentIndex((prev) => wrap(0, images.length, prev + 1))
   }
 
   const prevSlide = () => {
     setDirection('left')
-    setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1))
+    setCurrentIndex((prev) => wrap(0, images.length, prev - 1))
   }
 
   const goToSlide = (index) => {
@@ -39,11 +41,11 @@ const Slider = () => {
 
   const ArrowProps = {
     whileHover: {
-      scale: 1.1,
+      scale: 1.0,
       translateY: '-50%',
     },
     whileTap: {
-      scale: 0.95,
+      scale: 1,
       translateY: '-50%',
     },
     className: 'arrowButton',
@@ -53,31 +55,8 @@ const Slider = () => {
     },
   }
 
-  const variants = {
-    hidden: (direction) => ({
-      x: direction === 'right' ? '100%' : '-100%',
-    }),
-    visible: {
-      x: 0,
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 20,
-      },
-    },
-    exit: (direction) => ({
-      x: direction === 'right' ? '-100%' : '100%',
-      transition: {
-        type: 'spring',
-        stiffness: 100,
-        damping: 20,
-      },
-    }),
-  }
-
   return (
     <div className="sliderContainer">
-      {/* Left Arrow */}
       <motion.button
         {...ArrowProps}
         className="arrowButton leftArrow"
@@ -89,7 +68,6 @@ const Slider = () => {
         </svg>
       </motion.button>
 
-      {/* Right Arrow */}
       <motion.button
         {...ArrowProps}
         className="arrowButton rightArrow"
@@ -113,8 +91,8 @@ const Slider = () => {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={(e, { offset }) => {
-            if (offset.x > 100) prevSlide()
-            if (offset.x < -100) nextSlide()
+            if (offset.x > 1) prevSlide()
+            if (offset.x < -1) nextSlide()
           }}
         >
           <div className="dotsContainer">
