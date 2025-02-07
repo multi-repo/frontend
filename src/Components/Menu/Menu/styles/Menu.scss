@@ -43,6 +43,7 @@
     border: none;
     color: #333;
     cursor: pointer;
+    transition: transform 0.3s ease;
 
     @media (max-width: 768px) {
       display: block;
@@ -55,6 +56,7 @@
     width: 100vw;
     justify-content: space-between;
     box-sizing: border-box;
+    transition: transform 0.3s ease-in-out;
 
     @media (max-width: 768px) {
       display: none;
@@ -73,6 +75,9 @@
     display: flex;
     width: fit-content;
     margin-top: 1vh;
+    @media (max-width: 768px) {
+      display: flex;
+    }
   }
 
   &__link {
@@ -82,10 +87,33 @@
     color: #333;
     font-size: 1rem;
     font-weight: 500;
-    transition: background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition:
+      color 0.3s ease,
+      transform 0.3s ease;
 
-    &:hover {
-      background-color: #f0f0f0;
+    @media (min-width: 768px) {
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background-color: #3498db;
+        transition: width 0.4s ease-out;
+      }
+
+      &:hover {
+        background-color: #f0f0f0;
+        transform: translateX(5px);
+      }
+
+      &:hover::after {
+        width: 100%;
+        left: 0;
+      }
     }
 
     @media (max-width: 768px) {
