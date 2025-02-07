@@ -4,11 +4,11 @@ import { asyncSwitchTheme } from '../../../../store/Theme/index.js'
 import './styles/index.scss'
 
 const SwitcherTheme = () => {
-  const theme = useSelector((state) => state.theme.theme)
+  const theme = useSelector((state) => state.theme.theme) // Получаем тему из Redux (redux-persist уже восстанавливает значение)
   const dispatch = useDispatch()
 
   const handleClick = () => {
-    dispatch(asyncSwitchTheme())
+    dispatch(asyncSwitchTheme()) // Переключаем тему
   }
 
   const handleKeyPress = (e) => {
@@ -18,15 +18,9 @@ const SwitcherTheme = () => {
   }
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme')
-    if (savedTheme) {
-      dispatch(asyncSwitchTheme(savedTheme))
+    if (theme) {
+      document.documentElement.setAttribute('data-theme', theme)
     }
-  }, [dispatch])
-
-  useEffect(() => {
-    localStorage.setItem('theme', theme)
-    document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
   return (
