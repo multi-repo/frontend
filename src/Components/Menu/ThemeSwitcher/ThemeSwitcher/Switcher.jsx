@@ -18,6 +18,14 @@ const SwitcherTheme = () => {
   }
 
   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme')
+    if (savedTheme) {
+      dispatch(asyncSwitchTheme(savedTheme))
+    }
+  }, [dispatch])
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme)
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
 
