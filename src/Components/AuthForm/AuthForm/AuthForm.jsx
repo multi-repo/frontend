@@ -52,9 +52,8 @@ const AuthForm = () => {
         <form className="authForm" onSubmit={handleSubmit}>
           <div className="formGroup">
             <h2>Авторизация</h2>
+            {statusError && <p className="error">{errorMessage}</p>}
           </div>
-
-          {statusError && <p className="error">{errorMessage}</p>}
 
           <div className="formGroup">
             <InputField

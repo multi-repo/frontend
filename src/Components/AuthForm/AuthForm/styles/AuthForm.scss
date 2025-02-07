@@ -26,7 +26,7 @@
   h2 {
     text-align: center;
     font-size: 2.1vh;
-    margin-bottom: 4vh;
+    margin-bottom: 3vh;
     color: $text-color;
     font-family: $font-family;
   }
@@ -60,7 +60,7 @@
   .error {
     color: $error-color;
     font-size: clamp(0.8rem, 0.6vw, 1rem);
-    margin-bottom: 15px;
+    margin-bottom: 1vh;
     text-align: center;
     font-family: $font-family;
     @include responsive-font(0.8rem, 1rem);
