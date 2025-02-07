@@ -22,7 +22,6 @@ const MenuList = () => {
     { path: '/option2', label: 'Option 2' },
     { path: '/section2-option3', label: 'Section 2: Option 3' },
     { path: '/section2-option4', label: 'Option 4' },
-    { path: '/section3-option5', label: 'Section 3: Option 5' },
   ]
 
   return (
