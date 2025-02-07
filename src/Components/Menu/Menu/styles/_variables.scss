@@ -1,0 +1,23 @@
+@mixin link-hover-effect($bg-color) {
+  &::after {
+    content: '';
+    position: absolute;
+    background: $bg-color; 
+    bottom: 0;
+    right: 0;
+    width: 0;
+    height: 2px;
+    transition: width 0.4s ease-out;
+    filter: drop-shadow(0 0 5px rgba(52, 152, 219, 0.8));
+  }
+
+  &:hover {
+    transform: translateX(5px);
+  }
+
+  &:hover::after {
+    width: 100%;
+    left: 0;
+    filter: drop-shadow(0 0 10px rgb(252, 254, 255));
+  }
+}
