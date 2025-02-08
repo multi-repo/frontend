@@ -89,7 +89,7 @@ const Slider = () => {
           exit="exit"
           className="slide"
           drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
+          dragElastic={0}
           onDragEnd={(e, { offset }) => {
             if (offset.x > 1) prevSlide()
             if (offset.x < -1) nextSlide()
