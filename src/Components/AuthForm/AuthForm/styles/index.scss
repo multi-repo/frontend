@@ -4,20 +4,3 @@
 @use './FormInput.scss' as *;
 @use './OAuth-Icns.scss' as *;
 
-@mixin responsive-font($min, $max) {
-    @media (max-width: 1440px) {
-      font-size: clamp(#{$min}, 1.4vw, #{$max});
-    }
-  
-    @media (max-width: 1024px) {
-      font-size: clamp(#{$min}, 2vw, #{$max});
-    }
-  
-    @media (max-width: 768px) {
-      font-size: clamp(#{$min}, 3vw, #{$max});
-    }
-  
-    @media (max-width: 480px) {
-      font-size: clamp(#{$min}, 5vw, #{$max});
-    }
-  }

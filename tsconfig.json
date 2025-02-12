@@ -30,7 +30,7 @@
       "src/**/*.jsx",
       "./*.mjs",
       "./*.js"
-    ],
+, "vite.config.mts"    ],
     "exclude": [
       "node_modules",
       "dist"
