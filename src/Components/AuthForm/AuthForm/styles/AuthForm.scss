@@ -74,6 +74,9 @@
   @media (max-width: 1024px) {
     width: 75vw;
     padding: 5vw;
+    h2{
+      font-size: clamp(0.7rem, 5vw, 5rem);
+    }
   }
 
   @media (max-width: 768px) {

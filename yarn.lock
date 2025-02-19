@@ -1584,6 +1584,11 @@
     "@eslint/core" "^0.10.0"
     levn "^0.4.1"
 
+"@glidejs/glide@^3.7.1":
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/@glidejs/glide/-/glide-3.7.1.tgz#cd3fb256006d9c7aec2f95873d268410df2ab0ce"
+  integrity sha512-8he0pZpLSqTesSFYiuWdhBmtdlYSPWxfPUCKtkkiX6ZmT8UdMdmoFPtJaOwLBXv4p2JiGxqbuPdiRGGo2e/htQ==
+
 "@humanfs/core@^0.19.1":
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/@humanfs/core/-/core-0.19.1.tgz#17c55ca7d426733fe3c561906b8173c336b40a77"
@@ -6351,6 +6356,11 @@ git-raw-commits@^4.0.0:
     dargs "^8.0.0"
     meow "^12.0.1"
     split2 "^4.0.0"
+
+glider-js@^1.7.9:
+  version "1.7.9"
+  resolved "https://registry.yarnpkg.com/glider-js/-/glider-js-1.7.9.tgz#a5b6adcc6ba4919c734207a81ed9deb4db2209eb"
+  integrity sha512-22r7EZ8cd4HWsM+pvNResu1h9tvJmAlrMBO2CbdJ9mhsYF/UllJEdvq8OuJDBgYcD0aja51vzRb/TbT7BCAaig==
 
 glob-parent@^5.1.2, glob-parent@~5.1.2:
   version "5.1.2"

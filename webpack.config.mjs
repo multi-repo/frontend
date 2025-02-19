@@ -1,9 +1,9 @@
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
-const isProd = process.env.PROD_ENV === 'production';
+const isProd = process.env.PROD_ENV === 'production'
 
 export default {
   devtool: isProd ? 'source-map' : 'eval-source-map',
@@ -21,6 +21,17 @@ export default {
 
   module: {
     rules: [
+      {
+        test: /\.(png|jpe?g|gif|svg|webp|avif)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[path][name].[ext]',
+            },
+          },
+        ],
+      },
       {
         test: /\.scss$/i,
         use: [
@@ -83,4 +94,4 @@ export default {
   ],
 
   mode: isProd ? 'production' : 'development',
-};
+}
