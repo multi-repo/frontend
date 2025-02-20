@@ -1,19 +1,16 @@
-/* eslint-disable */ 
-
+/* eslint-disable */
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import './styles/index.scss'
 import image1 from '../../../../assets/SliderLayout/photo-1494783367193-149034c05e8f.avif'
 
-// Оригинальные слайды
 const originalImages = [image1, image1, image1]
 
 const Slider = () => {
   const slideCount = originalImages.length
-  // Создаем массив из 3 копий
   const slides = [...originalImages, ...originalImages, ...originalImages]
 
-  // Изначально устанавливаем currentIndex на начало центральной копии
+  // Изначально currentIndex указывает на начало центральной копии
   const [currentIndex, setCurrentIndex] = useState(slideCount)
   const [dragOffset, setDragOffset] = useState(0)
   const [disableTransition, setDisableTransition] = useState(false)
@@ -27,29 +24,26 @@ const Slider = () => {
 
   useEffect(() => {
     const updateWidth = () => {
-      if (sliderRef.current) setContainerWidth(sliderRef.current.offsetWidth)
+      if (sliderRef.current) {
+        setContainerWidth(sliderRef.current.offsetWidth)
+      }
     }
     updateWidth()
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [])
 
-  // Вычисляем смещение контейнера
-  const baseOffset = -currentIndex * slideWithGap
-  const currentOffset = baseOffset + dragOffset
-
   const nextSlide = () => {
-    setCurrentIndex((prev) => prev + 1)
+    setCurrentIndex(prev => prev + 1)
     setDragOffset(0)
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => prev - 1)
+    setCurrentIndex(prev => prev - 1)
     setDragOffset(0)
   }
 
   const goToSlide = (index) => {
-    // Переводим индекс оригинального слайда в индекс центральной копии
     setCurrentIndex(index + slideCount)
     setDragOffset(0)
   }
@@ -66,26 +60,29 @@ const Slider = () => {
     setDragOffset(0)
   }
 
-  // Следим за изменением currentIndex и корректируем его, если вышли за центральную копию
-  useEffect(() => {
-    if (currentIndex < slideCount) {
-      // Если слайдов меньше, чем нужно, то мгновенно перемещаемся в конец центральной копии
-      setDisableTransition(true)
-      setCurrentIndex((prev) => prev + slideCount)
-    } else if (currentIndex >= slideCount * 2) {
-      setDisableTransition(true)
-      setCurrentIndex((prev) => prev - slideCount)
-    }
-  }, [currentIndex, slideCount])
+  // Универсальная корректировка индекса после завершения анимации
+  // Если индекс вышел за пределы центральной копии, обновляем его синхронно без анимации
+  const handleAnimationComplete = () => {
+    setCurrentIndex(prev => {
+      let newIndex = prev
+      if (prev < slideCount) {
+        newIndex = prev + slideCount
+      } else if (prev >= slideCount * 2) {
+        newIndex = prev - slideCount
+      }
+      if (newIndex !== prev) {
+        setDisableTransition(true)
+        // Обновляем без перехода до следующей отрисовки
+        setTimeout(() => {
+          setDisableTransition(false)
+        }, 0)
+      }
+      return newIndex
+    })
+  }
 
-  // После отключения перехода возвращаем его в следующем кадре
-  useEffect(() => {
-    if (disableTransition) {
-      requestAnimationFrame(() => setDisableTransition(false))
-    }
-  }, [disableTransition])
-
-  // Активный индекс для точек определяется как currentIndex % slideCount
+  const baseOffset = -currentIndex * slideWithGap
+  const currentOffset = baseOffset + dragOffset
   const activeDotIndex = currentIndex % slideCount
 
   return (
@@ -126,6 +123,7 @@ const Slider = () => {
             ? { duration: 0 }
             : { type: 'spring', stiffness: 150, damping: 20 }
         }
+        onAnimationComplete={handleAnimationComplete}
       >
         {slides.map((image, index) => (
           <motion.div
@@ -141,7 +139,11 @@ const Slider = () => {
               scale: index === currentIndex ? 1 : 0.9,
               opacity: index === currentIndex ? 1 : 0.6,
             }}
-            transition={{ duration: disableTransition ? 0 : 0.3 }}
+            transition={
+              disableTransition
+                ? { duration: 0 }
+                : { type: 'spring', stiffness: 150, damping: 20 }
+            }
           />
         ))}
       </motion.div>
