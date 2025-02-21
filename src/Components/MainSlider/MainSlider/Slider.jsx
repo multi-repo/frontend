@@ -10,40 +10,60 @@ const Slider = () => {
   const slideCount = originalImages.length
   const slides = [...originalImages, ...originalImages, ...originalImages]
 
-  // Изначально currentIndex указывает на начало центральной копии
   const [currentIndex, setCurrentIndex] = useState(slideCount)
   const [dragOffset, setDragOffset] = useState(0)
   const [disableTransition, setDisableTransition] = useState(false)
-  const [containerWidth, setContainerWidth] = useState(window.innerWidth)
+  const [containerWidth, setContainerWidth] = useState(0)
+  const [isAnimating, setIsAnimating] = useState(false)
+  const [hasMounted, setHasMounted] = useState(false)
+  // Новое состояние для отслеживания первого рендера с вычисленной шириной
+  const [isInitial, setIsInitial] = useState(true)
   const sliderRef = useRef(null)
 
-  // Размеры слайда и зазора
-  const slideWidth = containerWidth * 0.8
-  const gap = containerWidth * 0.02
-  const slideWithGap = slideWidth + gap
-
   useEffect(() => {
+    if (sliderRef.current) {
+      setContainerWidth(sliderRef.current.offsetWidth)
+    }
+    setHasMounted(true)
     const updateWidth = () => {
       if (sliderRef.current) {
         setContainerWidth(sliderRef.current.offsetWidth)
       }
     }
-    updateWidth()
     window.addEventListener('resize', updateWidth)
     return () => window.removeEventListener('resize', updateWidth)
   }, [])
 
+  // После получения containerWidth отключаем режим "isInitial"
+  useEffect(() => {
+    if (containerWidth > 0) {
+      // Выключаем анимацию на первом обновлении
+      setIsInitial(true)
+      setTimeout(() => setIsInitial(false), 0)
+    }
+  }, [containerWidth])
+
+  const slideWidth = containerWidth * 0.8
+  const gap = containerWidth * 0.02
+  const slideWithGap = slideWidth + gap
+
   const nextSlide = () => {
-    setCurrentIndex(prev => prev + 1)
+    if (isAnimating) return
+    setIsAnimating(true)
+    setCurrentIndex((prev) => prev + 1)
     setDragOffset(0)
   }
 
   const prevSlide = () => {
-    setCurrentIndex(prev => prev - 1)
+    if (isAnimating) return
+    setIsAnimating(true)
+    setCurrentIndex((prev) => prev - 1)
     setDragOffset(0)
   }
 
   const goToSlide = (index) => {
+    if (isAnimating) return
+    setIsAnimating(true)
     setCurrentIndex(index + slideCount)
     setDragOffset(0)
   }
@@ -60,10 +80,8 @@ const Slider = () => {
     setDragOffset(0)
   }
 
-  // Универсальная корректировка индекса после завершения анимации
-  // Если индекс вышел за пределы центральной копии, обновляем его синхронно без анимации
   const handleAnimationComplete = () => {
-    setCurrentIndex(prev => {
+    setCurrentIndex((prev) => {
       let newIndex = prev
       if (prev < slideCount) {
         newIndex = prev + slideCount
@@ -72,13 +90,13 @@ const Slider = () => {
       }
       if (newIndex !== prev) {
         setDisableTransition(true)
-        // Обновляем без перехода до следующей отрисовки
         setTimeout(() => {
           setDisableTransition(false)
         }, 0)
       }
       return newIndex
     })
+    setIsAnimating(false)
   }
 
   const baseOffset = -currentIndex * slideWithGap
@@ -87,29 +105,33 @@ const Slider = () => {
 
   return (
     <div className="sliderContainer" ref={sliderRef}>
-      <motion.button
-        className="arrowButton leftArrow"
-        onClick={prevSlide}
-        aria-label="Previous slide"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
-        </svg>
-      </motion.button>
+      <div className="arrowContainer leftArrow">
+        <motion.button
+          className="arrowButton"
+          onClick={prevSlide}
+          aria-label="Previous slide"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
+          </svg>
+        </motion.button>
+      </div>
 
-      <motion.button
-        className="arrowButton rightArrow"
-        onClick={nextSlide}
-        aria-label="Next slide"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <svg width="24" height="24" viewBox="0 0 24 24">
-          <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
-        </svg>
-      </motion.button>
+      <div className="arrowContainer rightArrow">
+        <motion.button
+          className="arrowButton"
+          onClick={nextSlide}
+          aria-label="Next slide"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <svg width="24" height="24" viewBox="0 0 24 24">
+            <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" />
+          </svg>
+        </motion.button>
+      </div>
 
       <motion.div
         className="slidesWrapper"
@@ -118,8 +140,9 @@ const Slider = () => {
         onDrag={handleDrag}
         onDragEnd={handleDragEnd}
         animate={{ x: currentOffset }}
+        initial={{ x: currentOffset }}
         transition={
-          disableTransition
+          disableTransition || !hasMounted || isInitial
             ? { duration: 0 }
             : { type: 'spring', stiffness: 150, damping: 20 }
         }
@@ -140,7 +163,7 @@ const Slider = () => {
               opacity: index === currentIndex ? 1 : 0.6,
             }}
             transition={
-              disableTransition
+              disableTransition || !hasMounted || isInitial
                 ? { duration: 0 }
                 : { type: 'spring', stiffness: 150, damping: 20 }
             }
