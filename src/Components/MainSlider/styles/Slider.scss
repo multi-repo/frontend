@@ -55,10 +55,23 @@
   }
 }
 
-.arrowButton {
+.arrowContainer {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
+  z-index: 10;
+}
+
+.leftArrow {
+  left: 20px;
+}
+
+.rightArrow {
+  right: 20px;
+}
+
+/* Остальные стили для кнопок можно оставить или адаптировать */
+.arrowButton {
   background: rgba(0, 0, 0, 0.3);
   border: none;
   border-radius: 50%;
@@ -68,16 +81,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 10;
   color: white;
-
-  &.leftArrow {
-    left: 20px;
-  }
-
-  &.rightArrow {
-    right: 20px;
-  }
 
   svg {
     fill: currentColor;
