@@ -2,11 +2,7 @@
 
 ``` yarn install ```
 
-### Start with vite 
-
-``` yarn dev ```
-
-### Webpack 
+### Start
 
 ``` yarn start ```
 
