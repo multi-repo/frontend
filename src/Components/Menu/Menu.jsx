@@ -4,18 +4,7 @@ import MenuLayout from './Menu/MenuMain.jsx'
 import './Menu.scss'
 
 const MenuMainLayout = () => {
-  return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <>
-            <MenuLayout />
-          </>
-        }
-      />
-    </Routes>
-  )
+  return <MenuLayout />
 }
 
 export default MenuMainLayout
