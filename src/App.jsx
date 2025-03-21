@@ -7,9 +7,7 @@ const App = () => {
   const theme = useSelector((state) => state.theme.theme)
 
   return (
-    <div
-      className={`app ${theme === 'light' ? 'app__styles__light' : 'app__styles__dark'}`}
-    >
+    <div className={`app app__styles__${theme}`}>
       <MainLayout />
     </div>
   )
