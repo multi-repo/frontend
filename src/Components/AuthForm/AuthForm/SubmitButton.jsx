@@ -1,9 +1,10 @@
 import React from 'react'
 
 const SubmitButton = ({ isLoading }) => {
+  const buttonText = isLoading ? 'Загрузка...' : 'Войти'
   return (
     <button type="submit" className="submitButton" disabled={isLoading}>
-      {isLoading ? 'Загрузка...' : 'Войти'}
+      {buttonText}
     </button>
   )
 }

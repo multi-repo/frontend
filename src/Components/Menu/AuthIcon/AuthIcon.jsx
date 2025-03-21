@@ -1,18 +1,19 @@
 import React from 'react'
-import './styles/index.scss' // Убедитесь, что этот путь правильный
+import './styles/index.scss'
 import { useAuthButtonHandler } from '@/src/hooks/auth/auth-button-handler'
 
 const AuthIcon = () => {
   const { isAuthenticated, handleButtonClick } = useAuthButtonHandler()
+  const ariaLabel = isAuthenticated ? 'Выйти из системы' : 'Авторизоваться'
 
   return (
     <button
       onClick={handleButtonClick}
-      className="authButton" // Исправлено: убрали styles.authButton
-      aria-label={isAuthenticated ? 'Выйти из системы' : 'Авторизоваться'}
+      className="authButton"
+      aria-label={ariaLabel}
     >
       <svg
-        className="icon" // Исправлено: убрали styles.icon
+        className="icon"
         viewBox="0 0 24 24"
         xmlns="http://www.w3.org/2000/svg"
       >

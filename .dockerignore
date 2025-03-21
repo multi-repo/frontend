@@ -6,4 +6,5 @@ commitlint.config.mjs
 eslint.config.mjs
 tsconfig.json
 .husky
-
+.gitattributes
+vercel.json
