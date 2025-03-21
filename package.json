@@ -53,6 +53,7 @@
     "@babel/preset-react": "^7.26.3",
     "@commitlint/config-conventional": "^19.6.0",
     "@eslint-community/eslint-plugin-eslint-comments": "eslint-community/eslint-plugin-eslint-comments",
+    "@types/react": "^19.0.12",
     "@typescript-eslint/eslint-plugin": "^8.21.0",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-loader": "^9.2.1",
