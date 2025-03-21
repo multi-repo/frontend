@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/index.scss'
-import { useAuthButtonHandler } from '../../../hooks/auth/auth-button-handler.jsx'
+import { useAuthButtonHandler } from '@/hooks/auth/auth-button-handler.jsx'
 
 const AuthButtonTrigger = () => {
   const { isAuthenticated, handleButtonClick } = useAuthButtonHandler()

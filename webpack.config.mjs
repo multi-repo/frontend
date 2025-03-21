@@ -1,9 +1,9 @@
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
 
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __dirname = path.dirname(new URL(import.meta.url).pathname)
 
-const isProd = process.env.PROD_ENV === 'production';
+const isProd = process.env.PROD_ENV === 'production'
 
 export default {
   devtool: isProd ? 'source-map' : 'eval-source-map',
@@ -83,4 +83,4 @@ export default {
   ],
 
   mode: isProd ? 'production' : 'development',
-};
+}

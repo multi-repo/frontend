@@ -1,22 +1,11 @@
-// src/routes/routeElements.jsx
 import React from 'react'
 
-// Отдельные ленивые импорты
-export const WhiteFormPage = React.lazy(
+export const HOME_ELEMENT = React.lazy(
+  () => import('../layouts/HomeLayout.jsx')
+)
+export const WHITE_ELEMENT = React.lazy(
   () => import('../Components/WhiteForm/WhiteForm.jsx')
 )
-export const AuthPage = React.lazy(
+export const AUTH_LAYOUT = React.lazy(
   () => import('../Components/AuthForm/AuthMain.jsx')
 )
-export const AuthLayout = React.lazy(
-  () => import('../Components/AuthForm/AuthMain.jsx')
-)
-export const HomePage = React.lazy(() => import('../layouts/HomeLayout.jsx'))
-
-// (по желанию) Можно оставить общий объект, если будет удобно
-export const ROUTE_ELEMENTS = {
-  HOME: HomePage,
-  WHITE: WhiteFormPage,
-  AUTH: AuthPage,
-  AUTH_MAIN: AuthLayout,
-}

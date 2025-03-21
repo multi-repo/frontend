@@ -1,9 +1,17 @@
-import { ROUTE_PATHS } from './routePaths'
-import { ROUTE_ELEMENTS } from './routeElements'
+import { HOME_PATH, WHITE_PATH, AUTH_PATH } from './routePaths'
+import { HOME_ELEMENT, WHITE_ELEMENT, AUTH_LAYOUT } from './routeElements'
 
 export const routes = [
-  { path: ROUTE_PATHS.HOME, element: <ROUTE_ELEMENTS.HOME /> },
-  { path: ROUTE_PATHS.WHITE, element: <ROUTE_ELEMENTS.WHITE /> },
-  { path: ROUTE_PATHS.AUTH, element: <ROUTE_ELEMENTS.AUTH /> },
-  { path: ROUTE_PATHS.AUTH_MAIN, element: <ROUTE_ELEMENTS.AUTH_MAIN /> },
+  {
+    path: HOME_PATH,
+    element: <HOME_ELEMENT />,
+  },
+  {
+    path: WHITE_PATH,
+    element: <WHITE_ELEMENT />,
+  },
+  {
+    path: AUTH_PATH,
+    element: <AUTH_LAYOUT />,
+  },
 ]

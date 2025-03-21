@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import AuthButtonTrigger from '../AuthBtn/AuthBtn'
 import AuthIcon from '../AuthIcon/AuthIcon'
 import ThemeSwitcher from '../ThemeSwitcher/Swithcer'
-import { switchTheme } from '../../../store/Theme/slice'
+import { switchTheme } from '@/store/Theme/slice'
 import { useDispatch, useSelector } from 'react-redux'
 
 const MenuList = () => {

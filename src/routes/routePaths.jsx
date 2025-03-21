@@ -1,6 +1,3 @@
-export const ROUTE_PATHS = {
-  HOME: '/',
-  WHITE: '/white',
-  AUTH: '/auth',
-  AUTH_MAIN: '/auth-main',
-}
+export const HOME_PATH = '/'
+export const WHITE_PATH = '/white'
+export const AUTH_PATH = '/auth'

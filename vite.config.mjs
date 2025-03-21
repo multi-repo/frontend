@@ -1,27 +1,27 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import path from 'path';
+/* eslint-disable */
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 
 export default defineConfig(({ command, mode }) => {
-  
   base: '/'
 
-  const isProd = mode === 'production';
+  const isProd = mode === 'production'
 
   return {
     root: path.resolve(__dirname, 'src'),
 
     build: {
       outDir: path.resolve(__dirname, 'dist'),
-      sourcemap: !isProd, 
+      sourcemap: !isProd,
       terserOptions: isProd
         ? {
             compress: {
-              drop_console: true, 
+              drop_console: true,
             },
           }
         : {},
-      chunkSizeWarningLimit: 500, 
+      chunkSizeWarningLimit: 500,
     },
 
     plugins: [react()],
@@ -33,20 +33,19 @@ export default defineConfig(({ command, mode }) => {
     },
 
     server: {
-      port: 9000, 
+      port: 9000,
       open: true,
       historyApiFallback: true,
     },
 
     optimizeDeps: {
-      include: isProd ? ['react', 'react-dom'] : [], 
+      include: isProd ? ['react', 'react-dom'] : [],
     },
 
     css: {
       postcss: {
-        plugins: [
-        ],
+        plugins: [],
       },
     },
-  };
-});
+  }
+})

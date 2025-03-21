@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import './styles/index.scss'
-import image1 from '../../../assets/SliderLayout/photo-1494783367193-149034c05e8f.avif'
+import image1 from '@/assets/SliderLayout/photo-1494783367193-149034c05e8f.avif'
 
 const originalImages = [image1, image1, image1]
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser } from '../../../store/Auth/index.js'
+import { loginUser } from '@/store/Auth/index.js'
 import InputField from './InputField'
 import CheckboxField from './CheckboxField'
 import OAuthButtons from './OAuthButtons'
