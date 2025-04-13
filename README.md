@@ -1,12 +1,11 @@
 ### Install dependencies
 
-``` yarn install ```
+`yarn install`
 
-### Start with vite 
+### Start with vite
 
-``` yarn dev ```
+`yarn dev`
 
-### Webpack 
+### Webpack
 
-``` yarn start ```
-
+`yarn start`

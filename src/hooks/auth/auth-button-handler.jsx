@@ -10,7 +10,7 @@ export const useAuthButtonHandler = () => {
 
   const handleButtonClick = useCallback(async () => {
     if (isAuthenticated) {
-      await dispatch(logoutUser())
+      dispatch(logoutUser())
       navigate('/')
     } else {
       navigate('/auth')

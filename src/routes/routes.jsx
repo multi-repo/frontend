@@ -1,9 +1,7 @@
-import { ROUTE_PATHS } from './routePaths'
-import { ROUTE_ELEMENTS } from './routeElements'
+import route_map from './route_zmap'
+import LazyElement from './lazy_loading'
 
-export const routes = [
-  { path: ROUTE_PATHS.HOME, element: <ROUTE_ELEMENTS.HOME /> },
-  { path: ROUTE_PATHS.WHITE, element: <ROUTE_ELEMENTS.WHITE /> },
-  { path: ROUTE_PATHS.AUTH, element: <ROUTE_ELEMENTS.AUTH /> },
-  { path: ROUTE_PATHS.AUTH_MAIN, element: <ROUTE_ELEMENTS.AUTH_MAIN /> },
-]
+export const routes = route_map.map(({ path, component }) => ({
+  path,
+  element: <LazyElement component={component} />,
+}))

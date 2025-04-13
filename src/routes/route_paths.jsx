@@ -1,6 +1,6 @@
 export const ROUTE_PATHS = {
   HOME: '/',
-  WHITE: '/white',
+  WHITE_FORM: '/white-form',
   AUTH: '/auth',
-  AUTH_MAIN: '/auth-main',
+  AUTH_MAIN: '/auth/main',
 }
