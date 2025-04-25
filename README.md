@@ -1,11 +1,11 @@
 ### Install dependencies
 
-`yarn install`
+`pnpm install`
 
 ### Start with vite
 
-`yarn dev`
+`pnpm dev`
 
 ### Webpack
 
-`yarn start`
+`pnpm start`
